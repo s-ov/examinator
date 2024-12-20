@@ -1,0 +1,19 @@
+{% extends "examinator/home_page.html" %} 
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="justify-content-center">
+
+        {% for question in questions %}
+            <a href="{% url "examinator:question_answers" question_id=question.id %}" 
+               class="btn btn-success my-2">
+                {{ question.question_text }}
+            </a>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

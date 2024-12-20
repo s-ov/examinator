@@ -1,0 +1,24 @@
+{% extends "examinator/home_page.html" %} 
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="justify-content-center">
+
+        <h5 class="btn btn-success">{{ question }}</h5>
+
+        {% for answer in answers %}    
+            <table class="table table-success table-striped">
+                <tr>
+                    <td>{{ answer.answer_text }}</td>
+                    <td class="text-end">{{ answer.is_correct }}</td>
+                  </tr>
+            </table>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
