@@ -7,7 +7,10 @@ from .forms import QuestionForm, AnswerForm
 
 def home_view(request):
     """Render the home page."""
-    return render(request, 'examinator/home_page.html', {'title': 'Examinator'})
+    context = {
+        'title': 'Examinator',
+    }
+    return render(request, 'examinator/base_examinator.html', context)
 
 
 def create_question_view(request):
