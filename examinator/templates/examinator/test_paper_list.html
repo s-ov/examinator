@@ -1,0 +1,18 @@
+{% extends "examinator/base_examinator.html" %} 
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+    <h3>{{ title }}</h3>
+
+    {% for test_paper in test_papers %}
+        <h4>
+            <a href="">
+                Білет N{{ test_paper.ordinal_number }}
+            </a>
+        </h4>
+    {% endfor %}
+
+{% endblock %}

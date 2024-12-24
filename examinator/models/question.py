@@ -1,4 +1,5 @@
 from django.db import models
+from examinator.models.test_paper import TestPaper
 
 
 class Question(models.Model):
@@ -6,6 +7,13 @@ class Question(models.Model):
     
     ordinal_number = models.IntegerField('ordinal number')
     question_text = models.TextField('question text')
+    paper_test = models.ForeignKey(
+        TestPaper, 
+        on_delete=models.CASCADE, 
+        related_name='questions',
+        blank=True, 
+        null=True,
+        )
 
     def save(self, *args, **kwargs):
         """Automatically set or increment ordinal number."""

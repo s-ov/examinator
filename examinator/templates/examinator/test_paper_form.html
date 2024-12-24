@@ -1,0 +1,27 @@
+{% extends 'examinator/base_examinator.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <h2 class="text-center">{{ title }}</h2>
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="id_knowledge_test" class="form-label">Назва тесту</label>
+      <p>{{ form.knowledge_test }}
+    </div>
+    <div class="mb-3">
+        <label for="id_ordinal_number" class="form-label">Порядкоий номер</label>
+        <p>{{ form.ordinal_number }}
+    </div>
+    <div class="mb-3">
+        <label for="id_slug" class="form-label">Слаг білета</label>
+        <p>{{ form.slug }}
+    </div>
+    
+    <button type="submit">Створити</button>
+
+  </form>
+
+{% endblock %}

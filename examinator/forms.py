@@ -8,8 +8,9 @@ class QuestionForm(forms.ModelForm):
 
     class Meta:
         model = Question
-        fields = ['question_text']
+        fields = ['question_text', 'paper_test']
         labels = {
+            'paper_test': 'Білет',
             'question_text': 'Запитання',
         }
         widgets = {
@@ -17,6 +18,10 @@ class QuestionForm(forms.ModelForm):
                 'class': 'form-control', 
                 'rows': 3, 
                 'placeholder': 'Введіть питання...',
+                }
+            ),
+            'paper_test': forms.Select(attrs={
+                'class': 'form-control',
                 }
             ),
         }
