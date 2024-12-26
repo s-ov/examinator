@@ -3,7 +3,20 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<h2>Білет N{{ test_paper.ordinal_number }}</h2> 
 
+  <h4 class="text-center bg-secondary m-2 p-2 rounded">
+    {{ test_paper.knowledge_test.title }}. 
+    Білет N{{ test_paper.ordinal_number }}
+  </h4>
 
-  {% endblock %}
+  {% for question in test_paper.questions.all %}
+    <p class="bg-info my-2 p-2 rounded link-underline link-underline-opacity-0">
+      <a href="{% url 'examinator:home' %}"
+         class="text-dark link-underline link-underline-opacity-0"
+      >
+        {{ question.question_text }}
+      </a>
+    </p>
+  {% endfor %}
+
+{% endblock %}

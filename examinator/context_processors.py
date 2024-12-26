@@ -21,5 +21,9 @@ def navigation_links(request):
                 "name": "Список білетів", 
                 "url_name": "examinator:testpaper_list",
             },
+            {
+                "name": "Список тестів", 
+                "url_name": "examinator:knowledge_test_list",
+            },
         ]
     }

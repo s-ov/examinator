@@ -1,0 +1,30 @@
+{% extends 'examinator/base_examinator.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h4 class="text-center bg-secondary mx-5 p-2 rounded">
+        {{ knowledge_test.title }}
+    </h3>
+
+    <div class="container border border-3 m-1 p-2">
+        {% if knowledge_test.test_papers.exists %}
+
+            {% for test_paper in knowledge_test.test_papers.all %}
+                <h5 class="bg-secondary mx-5 p-2 rounded">
+                    <a href="{{ test_paper.get_absolute_url }}"
+                    class="text-white link-underline link-underline-opacity-0"
+                    >
+                        Білет N{{ test_paper.ordinal_number }} 
+                    </a>
+                </h5>
+            {% endfor %}
+        {% else %}
+            <h5>Для тесту 
+                    <span class="mx-2 text-info">{{ knowledge_test.title }}</span> 
+                білетів не знайдено.
+            </h5>
+        {% endif %}
+    </div>
+    
+{% endblock %}

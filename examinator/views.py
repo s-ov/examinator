@@ -1,3 +1,4 @@
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.forms import modelformset_factory
 from django.urls import reverse_lazy
@@ -105,13 +106,27 @@ class TestPaperListView(ListView):
             'test_papers': test_papers,
             'title': 'Список білетів',
         }
-        return render(request, 'examinator/test_paper_list.html', context)
+        return render(
+            request, 
+            'examinator/test_paper_list.html', 
+            context,
+            )
+    
+    def get_queryset(self):
+        return TestPaper.objects.filter(
+            slug=self.kwargs.get('slug'),
+            )
 
 
 class TestPaperDetailView(DetailView):
     model = TestPaper
     template_name = 'examinator/test_paper_detail.html' 
-    context_object_name = 'test_paper'  
+    context_object_name = 'test_paper' 
+
+    def get_queryset(self) -> TestPaper:
+        return TestPaper.objects.filter(
+            slug=self.kwargs.get('slug'),
+            ) 
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -129,4 +144,35 @@ class KnowledgeTestCreateView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Створити тест'
+        return context
+    
+
+class KnowledgeTestListView(ListView):
+    "View to list all knowledge test instances."
+    def get(self, request):
+        knowledge_tests = KnowledgeTest.objects.all()
+        context = {
+            'knowledge_tests': knowledge_tests,
+            'title': 'Список тестів',
+        }
+        return render(
+            request, 
+            'examinator/knowledge_test_list.html', 
+            context,
+            )
+    
+
+class KnowledgeTestDetailView(DetailView):
+    model = KnowledgeTest
+    template_name = 'examinator/knowledge_test_detail.html' 
+    context_object_name = 'knowledge_test' 
+
+    def get_queryset(self) -> KnowledgeTest:
+        return KnowledgeTest.objects.filter(
+            slug=self.kwargs.get('slug'),
+            ) 
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Деталі тесту'
         return context

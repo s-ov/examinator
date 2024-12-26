@@ -1,5 +1,7 @@
 from django.db import models
-from examinator.models.knowledge_test import KnowledgeTest
+from django.urls import reverse
+
+from examinator.models.question import Question
 
 
 class TestPaper(models.Model):
@@ -14,5 +16,19 @@ class TestPaper(models.Model):
         null=True,
     )       
 
+    def save(self, *args, **kwargs):
+        if self.ordinal_number is None:
+            max_number = TestPaper.objects.aggregate(
+                models.Max('ordinal_number')
+            )['ordinal_number__max']
+            self.ordinal_number = 1 if max_number is None else max_number + 1
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f'Білет N{self.ordinal_number}.'
+    
+    def get_absolute_url(self):
+        return reverse(
+            'examinator:testpaper_detail', 
+            kwargs={'slug': self.slug},
+        )

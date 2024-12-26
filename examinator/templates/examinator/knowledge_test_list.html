@@ -1,0 +1,22 @@
+{% extends "examinator/base_examinator.html" %} 
+
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+
+    <div class="justify-content-center">
+        <h3 class="text-center">{{ title }}</h3>
+
+        {% for test in knowledge_tests %}
+            <p>
+                <a href="{% url "examinator:knowledge_test_detail" slug=test.slug %}" 
+                   class="btn btn-success my-2">
+                    {{ test.title }}
+                </a>
+            </p>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
