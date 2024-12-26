@@ -3,27 +3,27 @@ def navigation_links(request):
         'nav_items': [
             {
                 "name": "Створити тест", 
-                "url_name": "examinator:knowledge_test_create",
+                "url_name": "workflow:knowledge_test_create",
             },
             {
                 "name": "Створити білет", 
-                "url_name": "examinator:testpaper_create",
+                "url_name": "workflow:testpaper_create",
             },
             {
                 "name": "Створити запитання", 
-                "url_name": "examinator:create_question",
+                "url_name": "workflow:create_question",
             },
             {
                 "name": "Список запитань", 
-                "url_name": "examinator:list_question",
+                "url_name": "workflow:list_question",
             },
             {
                 "name": "Список білетів", 
-                "url_name": "examinator:testpaper_list",
+                "url_name": "workflow:testpaper_list",
             },
             {
                 "name": "Список тестів", 
-                "url_name": "examinator:knowledge_test_list",
+                "url_name": "workflow:knowledge_test_list",
             },
         ]
     }
