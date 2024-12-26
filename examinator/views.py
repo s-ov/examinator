@@ -167,12 +167,7 @@ class KnowledgeTestDetailView(DetailView):
     template_name = 'examinator/knowledge_test_detail.html' 
     context_object_name = 'knowledge_test' 
 
-    def get_queryset(self) -> KnowledgeTest:
-        return KnowledgeTest.objects.filter(
-            slug=self.kwargs.get('slug'),
-            ) 
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Деталі тесту'
-        return context
+        return context  

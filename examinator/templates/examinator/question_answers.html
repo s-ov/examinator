@@ -5,15 +5,25 @@
 
 {% block content %}
 
-    <div class="justify-content-center">
+    <div class="container">
 
-        <h5 class="btn btn-success">{{ question }}</h5>
+        <h4 class="text-center">
+            Білет N{{ question.paper_test.ordinal_number }}.
+            Питання N{{ question.ordinal_number }}
+        </h4>
+        <h5 class="bg-info p-1 rounded">{{ question }}</h5>
 
         {% for answer in answers %}    
             <table class="table table-success table-striped">
                 <tr>
                     <td>{{ answer.answer_text }}</td>
-                    <td class="text-end">{{ answer.is_correct }}</td>
+                    <td class="text-end">
+                        <a href="" 
+                           class="btn btn-info"
+                        >
+                            {{ answer.is_correct }}
+                        </a>
+                    </td>
                   </tr>
             </table>
 

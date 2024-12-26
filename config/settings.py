@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'examinator.apps.ExaminatorConfig',
+    'scoreboard.apps.ScoreboardConfig',
 ]
 
 MIDDLEWARE = [
