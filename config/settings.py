@@ -19,6 +19,7 @@ INSTALLED_APPS = [
 
     'examinator.apps.ExaminatorConfig',
     'scoreboard.apps.ScoreboardConfig',
+    'workflow.apps.WorkflowConfig',
 ]
 
 MIDDLEWARE = [
@@ -36,7 +37,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -45,7 +46,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                'examinator.context_processors.navigation_links',
+                'workflow.context_processors.navigation_links',
             ],
         },
     },
